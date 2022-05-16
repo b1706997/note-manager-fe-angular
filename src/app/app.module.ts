@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NoteDetailComponent } from './note-detail/note-detail.component';
 import { NoteManagerComponent } from './note-manager/note-manager.component';
 import { TestingComponentComponent } from './testing-component/testing-component.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +19,8 @@ import { TestingComponentComponent } from './testing-component/testing-component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
