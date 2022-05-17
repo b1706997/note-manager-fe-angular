@@ -2,12 +2,14 @@
     <div>
         <div>
           <h3>NOTES</h3>
-          <p>+</p>
+          <button mat-button (click)="openAddNotesDialog()">+</button>
         </div>
-  
+
         <input />
     </div>
     <div *ngFor="let note of notes">
       <app-note [note]="note"></app-note>
     </div>
-  </div>
+</div>
+
+
