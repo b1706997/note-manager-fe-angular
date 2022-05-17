@@ -13,12 +13,21 @@ import { NoteEffects } from './store/note/note.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment'; // Angular CLI environment
 import { noteReducer } from './store/note/note.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AddNoteDialogComponent } from './add-note-dialog/add-note-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
     NoteComponent,
     NoteDetailComponent,
-    NoteManagerComponent  
+    NoteManagerComponent,
+    AddNoteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,8 +40,14 @@ import { noteReducer } from './store/note/note.reducer';
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
     EffectsModule.forRoot([]),
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatButtonModule,
+    FormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
