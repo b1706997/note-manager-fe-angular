@@ -1,4 +1,8 @@
 <div style='height:100%;width:100%;background-color:#569ce3;color:white'>
+    <div class='d-flex justify-content-between'>
+        <button (click)="goBack()">Back</button>
+        <button>Delete</button>
+    </div>
     <h5>{{note?.contents}}</h5>
     <p>{{note?.creationDate}}</p>
 </div>
