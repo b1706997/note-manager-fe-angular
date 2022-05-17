@@ -19,4 +19,8 @@ export class NoteServiceService {
   getNote(id:string):Observable<Note> {
     return this.httpClient.get<Note>(this.noteUrl+"/"+id)
   }
+
+  createNote(content : string) : Observable<Note> {
+    return this.httpClient.post<Note>(this.noteUrl,{contents:content});
+  }
 }

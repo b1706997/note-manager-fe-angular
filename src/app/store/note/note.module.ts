@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
-import { noteReducer } from './note.reducer';
+import { featureName, noteReducer } from './note.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { NoteEffects } from './note.effects';
 @NgModule({
     imports:[
-        StoreModule.forFeature('noteStore', noteReducer),
+        StoreModule.forFeature(featureName, noteReducer),
         EffectsModule.forFeature([NoteEffects])
     ],
 })

@@ -1,6 +1,6 @@
 import { Injectable, NgModule } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, of } from 'rxjs';
+import { EMPTY, tap } from 'rxjs';
 import { map, mergeMap, catchError } from 'rxjs/operators';
 import { NoteServiceService } from 'src/services/note/note-service.service';
 @Injectable()

@@ -12,5 +12,9 @@ export const initialState : State = {
 
 export const noteReducer = createReducer(
     initialState,
-    on(NoteActions.setNotes, (state, action) => ({ notes: action.notes }))
+    on(NoteActions.setNotes, (state, action) => {
+        return { notes: action.notes }
+    })
 )
+
+export const featureName = "noteFeature";

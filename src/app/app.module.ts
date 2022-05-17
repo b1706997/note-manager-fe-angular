@@ -24,13 +24,13 @@ import { noteReducer } from './store/note/note.reducer';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    StoreModule.forRoot({noteReducer}),
+    StoreModule.forRoot({}),
+    NoteModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode
     }),
-    EffectsModule.forRoot([NoteEffects]),
-    NoteModule
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]
