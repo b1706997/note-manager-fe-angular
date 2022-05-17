@@ -29,11 +29,13 @@ export class NoteManagerComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.notes.push({
-        id: Math.random(),
-        contents: result,
-        creationDate: new Date().toTimeString(),
-      });
+      if (result) {
+        this.notes.push({
+          id: Math.random(),
+          contents: result,
+          creationDate: new Date().toTimeString(),
+        });
+      }
     });
   }
 }
