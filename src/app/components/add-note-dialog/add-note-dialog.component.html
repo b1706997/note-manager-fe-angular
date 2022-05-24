@@ -1,10 +1,13 @@
 
-<mat-dialog-content class="mat-typography">
-  <mat-form-field class="example-full-width" appearance="fill">
-    <textarea matInput [(ngModel)]="contentNode" placeholder="Type someting" required></textarea>
-  </mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="contentNode" cdkFocusInitial>Add</button>
-</mat-dialog-actions>
+<form #f="ngForm">
+  <mat-dialog-content class="mat-typography">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <textarea matInput [(ngModel)]="contentNode" placeholder="Type someting" required #contentInput="ngModel"
+        name="content"></textarea>
+      </mat-form-field>
+      </mat-dialog-content>
+      <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button [mat-dialog-close]="contentNode" cdkFocusInitial [disabled]="!f.valid">Add</button>
+        </mat-dialog-actions>
+</form>
