@@ -1,0 +1,27 @@
+.back-btn {
+    background-color: transparent;
+    border: none;
+    color: white
+}
+
+.custom-area {
+    color: white;
+    width: 100%;
+    background-color: transparent;
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.custom-container {
+    height: 100%;
+    width: 100%;
+    background-color: #569ce3;
+    color: white;
+}
+
+.infor-container {
+    padding: 15px;
+}

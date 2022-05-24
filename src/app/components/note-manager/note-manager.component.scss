@@ -1,0 +1,23 @@
+.flex-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h3 {
+    margin: 0;
+}
+
+.custom-container {
+    background-color: #eee;
+    border-radius: 10px;
+    padding: 5px 0;
+}
+
+.search-box {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #eee;
+}

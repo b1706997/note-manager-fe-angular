@@ -1,8 +1,15 @@
-<div style='height:100%;width:100%;background-color:#569ce3;color:white'>
+<div class="custom-container p-2 pt-3">
     <div class='d-flex justify-content-between'>
-        <button (click)="goBack()">Back</button>
-        <button (click)="deleteNote()">Delete</button>
+        <button (click)="goBack()" class="back-btn">
+            <mat-icon>keyboard_arrow_left</mat-icon>
+        </button>
+        <button (click)="deleteNote()" class="back-btn">
+            <mat-icon>clear</mat-icon>
+        </button>
     </div>
-    <textarea *ngIf="note" [(ngModel)]="note!.contents" (input)="this.noteUpdateListener.next($event)">{{note?.contents}}</textarea>
-    <p>{{note?.creationDate}}</p>
+    <div class="infor-container">
+        <textarea *ngIf="note" [(ngModel)]="note!.contents" (input)="this.noteUpdateListener.next($event)"
+            class="custom-area">{{note?.contents}}</textarea>
+        <p>{{note?.creationDate}}</p>
+    </div>
 </div>

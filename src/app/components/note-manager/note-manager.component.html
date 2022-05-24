@@ -1,11 +1,14 @@
-<div class='container-fluid'>
-    <div>
-        <div>
-          <h3>NOTES</h3>
-          <button mat-button (click)="openAddNotesDialog()">+</button>
+<div class='container-fluid p-4'>
+  <div>
+    <div class="flex-box custom-container mb-4">
+      <h3 class="ml-4">NOTES</h3>
+      <button mat-button (click)="openAddNotesDialog()" class="border-rad-50">
+        <mat-icon>control_point</mat-icon>
+      </button>
         </div>
 
-        <input id='noteSearch' [(ngModel)]="searchValue" (ngModelChange)="this.noteSearchListener.next($event)"/>
+        <input id='noteSearch' [(ngModel)]="searchValue" (ngModelChange)="this.noteSearchListener.next($event)"
+          placeholder="Type something to search ..." class="search-box mb-4" />
     </div>
     <div *ngFor="let note of notes$ | async">      
       <app-note [note]="note"></app-note>
