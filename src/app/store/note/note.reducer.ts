@@ -23,13 +23,19 @@ export const noteReducer = createReducer(
     on(NoteActions.deleteNoteFromStore, (state, action) => {
         const newState: Note[] = [];
         state.notes.forEach((e:Note) => {
-            console.log(e)
-            console.log(action.noteId)
-            if(e.id.toString() != action.noteId) {
+            if(e.id.toString() != action.noteId) 
                 newState.push(e)
+        })
+        return { notes: newState }
+    }),
+    on(NoteActions.updateStateNote, (state, action) => {
+        const newState: Note[] = [];
+        state.notes.forEach((e:Note) => {
+            if(e.id == action.note.id) {
+                newState.push(action.note)
             }
             else 
-            console.log(e)
+                newState.push(e)
         })
         return { notes: newState }
     })

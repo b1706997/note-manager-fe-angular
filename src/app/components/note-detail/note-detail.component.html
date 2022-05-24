@@ -3,6 +3,6 @@
         <button (click)="goBack()">Back</button>
         <button (click)="deleteNote()">Delete</button>
     </div>
-    <h5>{{note?.contents}}</h5>
+    <textarea *ngIf="note" [(ngModel)]="note!.contents" (input)="this.noteUpdateListener.next($event)">{{note?.contents}}</textarea>
     <p>{{note?.creationDate}}</p>
 </div>

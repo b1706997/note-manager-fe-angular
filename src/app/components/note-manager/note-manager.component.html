@@ -5,7 +5,7 @@
           <button mat-button (click)="openAddNotesDialog()">+</button>
         </div>
 
-        <input />
+        <input id='noteSearch' [(ngModel)]="searchValue" (ngModelChange)="this.noteSearchListener.next($event)"/>
     </div>
     <div *ngFor="let note of notes$ | async">      
       <app-note [note]="note"></app-note>

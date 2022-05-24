@@ -6,4 +6,6 @@ export const createNote = createAction("[Note Manager] createNote", props<{conte
 export const addNoteIntoStore = createAction("[Note Manager] addNote", props<{note:Note}>())
 export const deleteNote = createAction("[Note Service] deleteNote", props<{noteId: string}>());
 export const deleteNoteFromStore = createAction("[Note Manager] deleteNote",props<{noteId:string}>());
-export const updateNote = createAction("[Note Manager] updateNote", props<{noteId: string, content: string}>());
+export const updateNote = createAction("[Note Service] updateNote", props<{noteId: string, content: string}>());
+export const updateStateNote = createAction("[Note Manager] updateStateNote", props<{note:Note}>());
+export const searchNote = createAction("[Note Manager] searchNote", props<{searchValue: string}>());

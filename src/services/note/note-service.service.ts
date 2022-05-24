@@ -27,4 +27,14 @@ export class NoteServiceService {
   deleteNote(noteId : string) : Observable<void> {
     return this.httpClient.delete<void>(this.noteUrl+"/"+noteId)
   }
+
+  searchNote(searchValue : string) : Observable<Note[]> {
+    return this.httpClient.get<Note[]>(this.noteUrl + "?contents=" + searchValue)
+  }
+
+  updateNote(noteId : string, content : string) : Observable<Note> {
+    const formData = new FormData()
+    formData.append('contents', content)
+    return this.httpClient.put<Note>(this.noteUrl + "/" + noteId, formData)
+  }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { EMPTY, Observable } from 'rxjs';
-import { map, mergeMap, catchError, exhaustMap } from 'rxjs/operators';
+import { map, mergeMap, catchError, exhaustMap, switchMap } from 'rxjs/operators';
 import { NoteServiceService } from 'src/services/note/note-service.service';
 import * as Action from '../../store/note/note.action';
 @Injectable()
@@ -10,15 +10,15 @@ export class NoteEffects {
     loadNotes$ = createEffect(() => this.actions$.pipe(
         ofType(Action.loadNotes),
         mergeMap(() => this.service.getNotes().pipe(
-            map(notes => ({ type: '[Note Manager] setNotes',  notes })),
+            map(notes => ({ type: '[Note Manager] setNotes', notes })),
             catchError(e => EMPTY)
         ))
     ))
-    
+
     createNote$ = createEffect(() => this.actions$.pipe(
         ofType(Action.createNote),
         exhaustMap(action => this.service.createNote(action.content).pipe(
-            map(note => ({type:'[Note Manager] addNote', note})),
+            map(note => ({ type: '[Note Manager] addNote', note })),
             catchError(e => EMPTY)
         ))
     ))
@@ -26,19 +26,27 @@ export class NoteEffects {
     deleteNote$ = createEffect(() => this.actions$.pipe(
         ofType(Action.deleteNote),
         mergeMap(action => this.service.deleteNote(action.noteId).pipe(
-            map(noteId=>({type:'[Note Manager] deleteNote', noteId})),
+            map(() => ({ type: '[Note Manager] deleteNote', noteId: action.noteId })),
             catchError(e => EMPTY)
         ))
     ))
 
-    // deleteNote$ = createEffect(() => this.actions$.pipe(
-    //     ofType(Action.deleteNote),
-    //     mergeMap((action) => {
-    //         this.service.deleteNote(action.noteId)
-    //         return [
-    //             Action.deleteNote({ noteId: action.noteId}),
-    //         ]
-    //     })
-    // ))
+    searchNote$ = createEffect(() => this.actions$.pipe(
+        ofType(Action.searchNote),
+        mergeMap(action => this.service.searchNote(action.searchValue).pipe(
+            map((notes) => ({ type: '[Note Manager] setNotes', notes })),
+            catchError(e => EMPTY)
+        ))
+    ))
+
+    updateNote$ = createEffect(() => this.actions$.pipe(
+        ofType(Action.updateNote),
+        mergeMap(action => this.service.updateNote(action.noteId, action.content).pipe(
+            map((note) => ({ type: '[Note Manager] updateStateNote', note })),
+            catchError(e => EMPTY)
+        ))
+    ))
+
+
 }
 
