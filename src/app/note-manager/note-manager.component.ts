@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store'
 import { Observable } from 'rxjs';
 import {featureName, State} from '../store/note/note.reducer';
 import { MatDialog } from '@angular/material/dialog';
-
+import * as NoteActions from '../store/note/note.action'
 @Component({
   selector: 'app-note-manager',
   templateUrl: './note-manager.component.html',
@@ -25,7 +25,7 @@ export class NoteManagerComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch({ type: '[Note Manager] loadNotes' });
   }
-  
+
   openAddNotesDialog(): void {
     const dialogRef = this.dialog.open(AddNoteDialogComponent, {
       width: '250px',
@@ -34,11 +34,7 @@ export class NoteManagerComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.notes.push({
-          id: Math.random(),
-          contents: result,
-          creationDate: new Date().toTimeString(),
-        });
+        this.store.dispatch(NoteActions.createNote({content: result}))
       }
     });
   }

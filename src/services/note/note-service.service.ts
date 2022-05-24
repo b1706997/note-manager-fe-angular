@@ -19,6 +19,12 @@ export class NoteServiceService {
   }
 
   createNote(content : string) : Observable<Note> {
-    return this.httpClient.post<Note>(this.noteUrl,{contents:content});
+    const formData = new FormData()
+    formData.append('contents', content)
+    return this.httpClient.post<Note>(this.noteUrl,formData);
+  }
+
+  deleteNote(noteId : string) : Observable<void> {
+    return this.httpClient.delete<void>(this.noteUrl+"/"+noteId)
   }
 }
