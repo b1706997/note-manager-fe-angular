@@ -22,8 +22,11 @@ export class NoteDetailComponent implements OnInit {
       debounceTime(1000),
       distinctUntilChanged())
       .subscribe((value:any) => {
-          this.store.dispatch(Actions.updateNote({ noteId: this.noteId, content: value.target.innerHTML }))
-          this._snackbar.open("Note content saved","",{duration:1500}) 
+          console.log(this.note?.contents);
+          this.note?.contents && this.note.contents.length > 0?(()=>{
+            this.store.dispatch(Actions.updateNote({ noteId: this.noteId, content: value.target.innerHTML }))
+            this._snackbar.open("Note content saved","",{duration:1500}) 
+          })():this._snackbar.open("Note was empty, please text something!","",{duration:1500}) 
       })
   }
 
